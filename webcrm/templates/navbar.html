@@ -1,0 +1,36 @@
+{% block navbar %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light ">
+  {% load static %}
+  <img src="{% static 'assets/logo-crm.png' %}" alt="logo-crm" style="margin-left: 20px; margin-right: 20px; width: 3%">
+  <a class="navbar-brand" href="#">DashBoard</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Products</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Sales</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://www.google.com" target="_blank">Help =></a>
+      </li>
+    </ul>
+  </div>
+  <div class="d-flex align-items-center col-2">
+      {% if user.is_authenticated %}
+      <p class="mb-0" style="margin-right: 25px;">Welcome, {{ user.username }}!</p>
+      <a href="{% url 'logout' %}" class="ml-20 mr-5">
+        <button type="button" class="btn btn-secondary">Logout</button>
+      </a>
+    {% else %}
+      <p class="mb-0" style="margin-right: 25px;">Welcome, guest!</p>
+      <a href="{% url 'login' %}" class="ml-2 mr-5">
+        <button type="button" class="btn btn-primary">Login</button>
+      </a>
+    {% endif %}
+  </div>
+</nav>
+{% endblock %}
