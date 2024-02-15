@@ -8,19 +8,26 @@ class ProductForm(forms.ModelForm):
     """
     class Meta:
         model = Product
-        fields = ['name', 'price', 'description']
+        fields = ['name', 'handle', 'price', 'description', 'image']
 
     widgets = {
         'name': forms.TextInput(attrs={'class': 'form-control'}),
+        'handle': forms.TextInput(attrs={'class': 'form-control'}),
         'price': forms.NumberInput(attrs={'class': 'form-control'}),
         'description': forms.Textarea(attrs={'class': 'form-control'}),
+        'image': forms.FileInput(attrs={'class': 'form-control'}),
     }
 
-    def clean_price(self):
-        """
-        Ensure the price is not negative
-        """
-        price = self.cleaned_data.get('price')
-        if price and price < 0:
-            raise forms.ValidationError('Price cannot be negative.')
-        return price
+    def __init__(self, *args, **kwargs):
+        super(ProductForm, self).__init__(*args, **kwargs)
+        self.fields['name'].label = ''
+        self.fields['handle'].label = ''
+        self.fields['price'].label = ''
+        self.fields['description'].label = ''
+        self.fields['image'].label = 'Image'
+
+        self.fields['name'].widget.attrs['placeholder'] = 'Product Name'
+        self.fields['handle'].widget.attrs['placeholder'] = 'Handle'
+        self.fields['price'].widget.attrs['placeholder'] = 'Price'
+        self.fields['description'].widget.attrs['placeholder'] = 'Description'
+        self.fields['image'].widget.attrs['placeholder'] = 'Image'

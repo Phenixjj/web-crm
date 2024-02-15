@@ -4,20 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51c34c34-35af-47a8-a9d1-32a427189c0d" name="Changes" comment="init product">
-      <change afterPath="$PROJECT_DIR$/webcrm/products/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webcrm/templates/products/create.html" afterDir="false" />
+    <list default="true" id="51c34c34-35af-47a8-a9d1-32a427189c0d" name="Changes" comment="feat: add product skeleton front and product model">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webcrm/products/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/webcrm/products/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webcrm/products/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/webcrm/products/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webcrm/products/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/webcrm/products/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webcrm/products/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/webcrm/products/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webcrm/products/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/webcrm/products/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webcrm/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/webcrm/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webcrm/templates/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/webcrm/templates/navbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webcrm/templates/website/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/webcrm/templates/website/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webcrm/webcrm/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/webcrm/webcrm/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webcrm/templates/products/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/webcrm/templates/products/create.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webcrm/templates/products/home_product.html" beforeDir="false" afterPath="$PROJECT_DIR$/webcrm/templates/products/home_product.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webcrm/webcrm/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/webcrm/webcrm/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webcrm/website/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/webcrm/website/forms.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -40,25 +36,26 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2cMXUKNzAEP0leEP1i2QRaGBWuc" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Docker.webcrm.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Docker.webcrm.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/webcrm/products" />
       <recent name="$PROJECT_DIR$/webcrm" />
       <recent name="$PROJECT_DIR$/webcrm/website/static" />
       <recent name="$PROJECT_DIR$/webcrm/website" />
@@ -125,7 +122,23 @@
       <option name="project" value="LOCAL" />
       <updated>1707992286820</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="feat: add product skeleton front and product model">
+      <option name="closed" value="true" />
+      <created>1707995315062</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1707995315062</updated>
+    </task>
+    <task id="LOCAL-00006" summary="feat: add product skeleton front and product model">
+      <option name="closed" value="true" />
+      <created>1707995332564</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1707995332564</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -139,7 +152,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="feature/website" />
+                        <option value="feature/products" />
                       </list>
                     </value>
                   </entry>
@@ -154,6 +167,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat : login &amp; logout skeleton" />
     <MESSAGE value="init product" />
-    <option name="LAST_COMMIT_MESSAGE" value="init product" />
+    <MESSAGE value="feat: add product skeleton front and product model" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add product skeleton front and product model" />
   </component>
 </project>
