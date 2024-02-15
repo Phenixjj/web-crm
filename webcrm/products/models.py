@@ -1,5 +1,5 @@
 from django.db import models
-from tools.utils import random_slug_generator
+from .tools.utils import random_slug_generator
 
 
 # Create products model
