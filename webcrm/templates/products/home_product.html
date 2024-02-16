@@ -3,16 +3,32 @@
 {% block content %}
     {% csrf_token %}
     {% if user.is_authenticated %}
-    <div class="col-md-6 offset-md-2">
-        <h1>Product</h1>
-        <p>Product page</p>
+    <div class="container">
+        <h1>All Products</h1>
+        <br>
         <a href="{% url 'home' %}">Back to home</a>
         <a href="{% url 'create' %}">Create a new product</a>
+        <br>
+        <div class="row">
+            {% for product in products %}
+            <div class="col-sm-6 col-lg-4 mb-5">
+                <div class="card" style="width: 18rem;">
+                  <img class="card-img-top" src='{{ product.image }}' alt="Img {{ product.name }}">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">{{ product.description }}</p>
+                    <p class="card-price"> {{ product.price }} €</p>
+                    <a href="#" class="btn btn-primary">Update</a>
+                  </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
     </div>
         {% else %}
-    <div class="col-md-6 offset-md-2">
+    <div class="container">
         <h1>You have to Log in or create an account</h1>
         <a href="{% url 'home' %}">Back to home</a>
-        {% endif %}
     </div>
+    {% endif %}
 {% endblock %}

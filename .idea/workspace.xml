@@ -4,16 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51c34c34-35af-47a8-a9d1-32a427189c0d" name="Changes" comment="feat: add product skeleton front and product model">
+    <list default="true" id="51c34c34-35af-47a8-a9d1-32a427189c0d" name="Changes" comment="WIP: Product MVT &amp; CRUD">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webcrm/products/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/webcrm/products/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webcrm/products/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/webcrm/products/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webcrm/products/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/webcrm/products/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webcrm/products/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/webcrm/products/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webcrm/templates/products/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/webcrm/templates/products/create.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webcrm/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/webcrm/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webcrm/templates/products/home_product.html" beforeDir="false" afterPath="$PROJECT_DIR$/webcrm/templates/products/home_product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webcrm/webcrm/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/webcrm/webcrm/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webcrm/website/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/webcrm/website/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webcrm/webcrm/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/webcrm/webcrm/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +137,23 @@
       <option name="project" value="LOCAL" />
       <updated>1707995332564</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="WIP: Product MVT &amp; CRUD">
+      <option name="closed" value="true" />
+      <created>1708031270391</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1708031270391</updated>
+    </task>
+    <task id="LOCAL-00008" summary="WIP: Product MVT &amp; CRUD">
+      <option name="closed" value="true" />
+      <created>1708091321942</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1708091321942</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -168,6 +183,7 @@
     <MESSAGE value="feat : login &amp; logout skeleton" />
     <MESSAGE value="init product" />
     <MESSAGE value="feat: add product skeleton front and product model" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add product skeleton front and product model" />
+    <MESSAGE value="WIP: Product MVT &amp; CRUD" />
+    <option name="LAST_COMMIT_MESSAGE" value="WIP: Product MVT &amp; CRUD" />
   </component>
 </project>
