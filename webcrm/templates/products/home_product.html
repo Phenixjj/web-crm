@@ -13,12 +13,12 @@
             {% for product in products %}
             <div class="col-sm-6 col-lg-4 mb-5">
                 <div class="card" style="width: 18rem;">
-                  <img class="card-img-top" src='{{ product.image }}' alt="Img {{ product.name }}">
+                  <img class="card-img-top" src='{{ product.image_url }}' alt="Img {{ product.name }}">
                   <div class="card-body">
                     <h5 class="card-title">{{ product.name }}</h5>
                     <p class="card-text">{{ product.description }}</p>
                     <p class="card-price"> {{ product.price }} €</p>
-                    <a href="#" class="btn btn-primary">Update</a>
+                    <a href="{% url 'product_detail' product.handle %}" class="btn btn-primary">Update</a>
                   </div>
                 </div>
             </div>

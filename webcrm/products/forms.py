@@ -1,5 +1,6 @@
 from django import forms
 from .models import Product
+from django.views.generic.edit import UpdateView
 
 
 class ProductForm(forms.ModelForm):
@@ -15,7 +16,7 @@ class ProductForm(forms.ModelForm):
         'handle': forms.TextInput(attrs={'class': 'form-control'}),
         'price': forms.NumberInput(attrs={'class': 'form-control'}),
         'description': forms.Textarea(attrs={'class': 'form-control'}),
-        'image': forms.FileInput(attrs={'class': 'form-control'}),
+        'image': forms.ImageField(),
     }
 
     def __init__(self, *args, **kwargs):
@@ -31,3 +32,9 @@ class ProductForm(forms.ModelForm):
         self.fields['price'].widget.attrs['placeholder'] = 'Price'
         self.fields['description'].widget.attrs['placeholder'] = 'Description'
         self.fields['image'].widget.attrs['placeholder'] = 'Image'
+
+
+class ProductUpdateForm(ProductForm):
+    def __init__(self, *args, **kwargs):
+        super(ProductUpdateForm, self).__init__(*args, **kwargs)
+        self.fields['handle'].disabled = True

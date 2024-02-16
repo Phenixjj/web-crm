@@ -7,6 +7,7 @@ from . import views
 urlpatterns = [
     path('', views.list_product_view, name='home_product'),
     path('create/', views.create, name='create'),
+    path('update/<str:handle>/', views.product_detail_view, name='product_detail'),
 ]
 
 if settings.DEBUG:
