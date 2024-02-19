@@ -1,30 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="51c34c34-35af-47a8-a9d1-32a427189c0d" name="Changes" comment="" />
+    <list default="true" id="51c34c34-35af-47a8-a9d1-32a427189c0d" name="Changes" comment="WIP: Product MVT &amp; CRUD &amp; s3Minio">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webcrm/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/webcrm/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webcrm/templates/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/webcrm/templates/navbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webcrm/templates/products/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/webcrm/templates/products/create.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webcrm/templates/products/home_product.html" beforeDir="false" afterPath="$PROJECT_DIR$/webcrm/templates/products/home_product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webcrm/templates/products/product_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/webcrm/templates/products/product_detail.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="didi" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2cMXUKNzAEP0leEP1i2QRaGBWuc" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Docker.webcrm.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/webcrm/products" />
+      <recent name="$PROJECT_DIR$/webcrm" />
+      <recent name="$PROJECT_DIR$/webcrm/website/static" />
+      <recent name="$PROJECT_DIR$/webcrm/website" />
+      <recent name="$PROJECT_DIR$/webcrm/static/assets" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="webcrm" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="envFilePath" value="" />
+          <option name="commandLineOptions" value="--build" />
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -41,6 +87,175 @@
       <option name="presentableId" value="Default" />
       <updated>1707922435945</updated>
     </task>
+    <task id="LOCAL-00001" summary="feat : login &amp; logout skeleton">
+      <option name="closed" value="true" />
+      <created>1707987510507</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1707987510507</updated>
+    </task>
+    <task id="LOCAL-00002" summary="feat : login &amp; logout skeleton">
+      <option name="closed" value="true" />
+      <created>1707987589849</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1707987589849</updated>
+    </task>
+    <task id="LOCAL-00003" summary="feat : login &amp; logout skeleton">
+      <option name="closed" value="true" />
+      <created>1707990800645</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1707990800645</updated>
+    </task>
+    <task id="LOCAL-00004" summary="init product">
+      <option name="closed" value="true" />
+      <created>1707992286820</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1707992286820</updated>
+    </task>
+    <task id="LOCAL-00005" summary="feat: add product skeleton front and product model">
+      <option name="closed" value="true" />
+      <created>1707995315062</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1707995315062</updated>
+    </task>
+    <task id="LOCAL-00006" summary="feat: add product skeleton front and product model">
+      <option name="closed" value="true" />
+      <created>1707995332564</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1707995332564</updated>
+    </task>
+    <task id="LOCAL-00007" summary="WIP: Product MVT &amp; CRUD">
+      <option name="closed" value="true" />
+      <created>1708031270391</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1708031270391</updated>
+    </task>
+    <task id="LOCAL-00008" summary="WIP: Product MVT &amp; CRUD">
+      <option name="closed" value="true" />
+      <created>1708091321942</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1708091321942</updated>
+    </task>
+    <task id="LOCAL-00009" summary="WIP: Product MVT &amp; CRUD &amp; s3Minio">
+      <option name="closed" value="true" />
+      <created>1708106562177</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1708106562177</updated>
+    </task>
+    <task id="LOCAL-00010" summary="WIP: Product MVT &amp; CRUD &amp; s3Minio">
+      <option name="closed" value="true" />
+      <created>1708106565145</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1708106565145</updated>
+    </task>
+    <task id="LOCAL-00011" summary="WIP: Product MVT &amp; CRUD &amp; s3Minio">
+      <option name="closed" value="true" />
+      <created>1708106581968</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1708106581968</updated>
+    </task>
+    <task id="LOCAL-00012" summary="WIP: Product MVT &amp; CRUD &amp; s3Minio">
+      <option name="closed" value="true" />
+      <created>1708196788382</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1708196788382</updated>
+    </task>
+    <task id="LOCAL-00013" summary="WIP: Product MVT &amp; CRUD &amp; s3Minio">
+      <option name="closed" value="true" />
+      <created>1708196797331</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1708196797331</updated>
+    </task>
+    <task id="LOCAL-00014" summary="WIP: Product MVT &amp; CRUD &amp; s3Minio">
+      <option name="closed" value="true" />
+      <created>1708198484377</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1708198484377</updated>
+    </task>
+    <task id="LOCAL-00015" summary="didi commit">
+      <option name="closed" value="true" />
+      <created>1708287444457</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1708287444457</updated>
+    </task>
+    <task id="LOCAL-00016" summary="WIP: Product MVT &amp; CRUD &amp; s3Minio">
+      <option name="closed" value="true" />
+      <created>1708287911705</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1708287911705</updated>
+    </task>
+    <task id="LOCAL-00017" summary="WIP: Product MVT &amp; CRUD &amp; s3Minio">
+      <option name="closed" value="true" />
+      <created>1708287962533</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1708287962533</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="feature/products" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat : login &amp; logout skeleton" />
+    <MESSAGE value="init product" />
+    <MESSAGE value="feat: add product skeleton front and product model" />
+    <MESSAGE value="WIP: Product MVT &amp; CRUD" />
+    <MESSAGE value="didi commit" />
+    <MESSAGE value="WIP: Product MVT &amp; CRUD &amp; s3Minio" />
+    <option name="LAST_COMMIT_MESSAGE" value="WIP: Product MVT &amp; CRUD &amp; s3Minio" />
   </component>
 </project>

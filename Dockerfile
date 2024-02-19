@@ -15,10 +15,9 @@ WORKDIR /webcrm
 
 COPY requirements.txt /webcrm/
 RUN pip install --no-cache-dir -r requirements.txt
-
-RUN pip install django-tailwind
-RUN pip install django_browser_reload
-
+RUN python -m pip install Pillow
+RUN pip install django-storages
+RUN pip install boto3
 
 COPY . .
 
