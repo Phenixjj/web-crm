@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'website',
     'products',
     'storages',
+    'sales',
+    'django_select2'
 ]
 
 MIDDLEWARE = [
