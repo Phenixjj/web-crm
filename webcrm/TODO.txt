@@ -1,0 +1,18 @@
+Product page :
+    - product add button
+    - list of the products
+    - product details :
+        - product name
+        - product description
+        - product price
+        - product image
+        - product add button
+        - product remove button
+        ========================
+        - product quantity
+        - product total price
+        - product stock quantity
+        - product category
+        - product stock alert
+        - product supplier
+        - product supplier time to deliver
