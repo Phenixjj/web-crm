@@ -2,9 +2,9 @@
 
 {% block content %}
   <div class="col-md-6 offset-md-2 position-relative">
-        <h1>Product Detail</h1>
+        <h1>Order Detail</h1>
         <br>
-        <form method="POST" enctype="multipart/form-data">
+        <form method="POST" action=".">
             {% csrf_token %}
             {{ form.as_p }}
             <button class="btn btn-success" type="submit" name="update">Update</button>

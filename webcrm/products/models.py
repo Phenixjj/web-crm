@@ -1,5 +1,6 @@
-from django.db import models
 from django.core.files.storage import get_storage_class
+from django.db import models
+
 from .tools.utils import random_slug_generator
 
 
