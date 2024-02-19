@@ -8,15 +8,19 @@
 </head>
 <body>
     <header>
+        <div class="fixed-top">
         {% include 'navbar.html' %}
         {% block navbar %}
         {% endblock %}
+        </div>
     </header>
 
-    <main>
-        {% block content %}
-        <!-- Content will go here -->
-        {% endblock %}
+    <main style="padding-top: 70px;">
+        <div class="position-relative">
+            {% block content %}
+            <!-- Content will go here -->
+            {% endblock %}
+        </div>
     </main>
 
     <footer>

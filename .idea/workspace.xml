@@ -5,15 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51c34c34-35af-47a8-a9d1-32a427189c0d" name="Changes" comment="WIP: Product MVT &amp; CRUD &amp; s3Minio">
-      <change afterPath="$PROJECT_DIR$/webcrm/templates/products/product_detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webcrm/products/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/webcrm/products/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webcrm/products/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/webcrm/products/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webcrm/products/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/webcrm/products/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webcrm/products/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/webcrm/products/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webcrm/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/webcrm/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webcrm/templates/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/webcrm/templates/navbar.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webcrm/templates/products/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/webcrm/templates/products/create.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webcrm/templates/products/home_product.html" beforeDir="false" afterPath="$PROJECT_DIR$/webcrm/templates/products/home_product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webcrm/webcrm/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/webcrm/webcrm/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webcrm/templates/products/product_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/webcrm/templates/products/product_detail.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +28,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/website" />
+        <entry key="$PROJECT_DIR$" value="didi" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -178,7 +175,55 @@
       <option name="project" value="LOCAL" />
       <updated>1708106581968</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="WIP: Product MVT &amp; CRUD &amp; s3Minio">
+      <option name="closed" value="true" />
+      <created>1708196788382</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1708196788382</updated>
+    </task>
+    <task id="LOCAL-00013" summary="WIP: Product MVT &amp; CRUD &amp; s3Minio">
+      <option name="closed" value="true" />
+      <created>1708196797331</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1708196797331</updated>
+    </task>
+    <task id="LOCAL-00014" summary="WIP: Product MVT &amp; CRUD &amp; s3Minio">
+      <option name="closed" value="true" />
+      <created>1708198484377</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1708198484377</updated>
+    </task>
+    <task id="LOCAL-00015" summary="didi commit">
+      <option name="closed" value="true" />
+      <created>1708287444457</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1708287444457</updated>
+    </task>
+    <task id="LOCAL-00016" summary="WIP: Product MVT &amp; CRUD &amp; s3Minio">
+      <option name="closed" value="true" />
+      <created>1708287911705</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1708287911705</updated>
+    </task>
+    <task id="LOCAL-00017" summary="WIP: Product MVT &amp; CRUD &amp; s3Minio">
+      <option name="closed" value="true" />
+      <created>1708287962533</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1708287962533</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -209,6 +254,7 @@
     <MESSAGE value="init product" />
     <MESSAGE value="feat: add product skeleton front and product model" />
     <MESSAGE value="WIP: Product MVT &amp; CRUD" />
+    <MESSAGE value="didi commit" />
     <MESSAGE value="WIP: Product MVT &amp; CRUD &amp; s3Minio" />
     <option name="LAST_COMMIT_MESSAGE" value="WIP: Product MVT &amp; CRUD &amp; s3Minio" />
   </component>

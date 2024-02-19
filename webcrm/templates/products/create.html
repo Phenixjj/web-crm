@@ -4,12 +4,16 @@
     <div class="col-md-6 offset-md-2">
     <h1>Add new product</h1>
     {% if user.is_authenticated %}
+
         <br>
         <form method="POST" action="." enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
             <br>
             <form>
+                <a href="{% url 'home_product' %}">
+                    <button type="submit" class="btn btn-danger">Cancel</button>
+                </a>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </form>
