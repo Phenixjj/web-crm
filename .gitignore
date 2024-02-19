@@ -1,0 +1,42 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+*.tar.gz
+
+# JavaScript / Node
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Django
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+db.sqlite3
+media
+
+# macOS
+.DS_Store
+
+# PyCharm
+.idea/
+
+# VS Code
+.vscode/
+
+# Minio
+minio/
+
+# Environtment
+.env
+.env.local
+.env.development
