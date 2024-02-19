@@ -14,10 +14,8 @@ ENV PYTHONUNBUFFERED=1
 WORKDIR /webcrm
 
 COPY requirements.txt /webcrm/
-RUN pip install --no-cache-dir -r requirements.txt
-RUN python -m pip install Pillow
-RUN pip install django-storages
-RUN pip install boto3
+RUN pip install -r requirements.txt
+RUN python -m pip install Pillow django_select2 django-storages boto3
 
 COPY . .
 

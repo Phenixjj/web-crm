@@ -32,3 +32,6 @@ media
 
 # VS Code
 .vscode/
+
+# Minio
+minio/

@@ -1,6 +1,5 @@
 from django import forms
 from .models import Product
-from django.views.generic.edit import UpdateView
 
 
 class ProductForm(forms.ModelForm):
