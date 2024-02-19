@@ -1,7 +1,7 @@
 {% block navbar %}
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expend-xl navbar-expand-lg navbar-light bg-light">
   {% load static %}
-  <img src="{% static 'assets/logo-crm.png' %}" alt="logo-crm" style="margin-left: 20px; margin-right: 20px; width: 3%">
+  <img src="{% static 'assets/logo-crm.png' %}" alt="logo-crm" style="margin-left: 40px; margin-right: 20px; width: 3%">
   <a class="navbar-brand" href="#">DashBoard</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -12,7 +12,7 @@
         <a class="nav-link" href="{% url 'home_product' %}">Products</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'home_sales' %}">Sales</a>
+        <a class="nav-link" href="{% url 'home_sales' %}">Orders & Customers</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="https://www.google.com" target="_blank">Help =></a>
@@ -20,16 +20,12 @@
     </ul>
   </div>
   <div class="d-flex align-items-center col-2">
-      {% if user.is_authenticated %}
+    {% if user.is_authenticated %}
       <p class="mb-0" style="margin-right: 25px;">Welcome, {{ user.username }}!</p>
-      <a href="{% url 'logout' %}" class="ml-20 mr-5">
-        <button type="button" class="btn btn-secondary">Logout</button>
-      </a>
+      <button type="button" class="btn btn-secondary ml-20 mr-5"><a href="{% url 'logout' %}" class="text-white text-decoration-none">Logout</a></button>
     {% else %}
       <p class="mb-0" style="margin-right: 25px;">Welcome, guest!</p>
-      <a href="{% url 'login' %}" class="ml-2 mr-5">
-        <button type="button" class="btn btn-primary">Login</button>
-      </a>
+      <button type="button" class="btn btn-primary ml-2 mr-5"><a href="{% url 'login' %}" class="text-white text-decoration-none">Login</a></button>
     {% endif %}
   </div>
 </nav>

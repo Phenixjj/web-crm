@@ -1,5 +1,6 @@
-from .env import config
 import dj_database_url
+
+from .env import config
 
 DATABASE_URL = config("DATABASE_URL", default=None)
 if DATABASE_URL is not None:

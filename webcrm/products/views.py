@@ -1,7 +1,6 @@
 from django.contrib import messages
-from django.shortcuts import render, redirect
 # import get_object_or_404
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import ProductForm, ProductUpdateForm
 from .models import Product

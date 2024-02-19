@@ -35,3 +35,8 @@ media
 
 # Minio
 minio/
+
+# Environtment
+.env
+.env.local
+.env.development

@@ -1,7 +1,9 @@
 from django import forms
 from django_select2.forms import Select2Widget
-from .models import Customer, SalesOrder
+
 from products.models import Product
+
+from .models import Customer, Order
 
 
 class CustomerForm(forms.ModelForm):
@@ -39,9 +41,9 @@ class CustomerForm(forms.ModelForm):
         self.fields['address'].widget.attrs['placeholder'] = 'Address'
 
 
-class SalesOrderForm(forms.ModelForm):
+class OrderForm(forms.ModelForm):
     """
-    Form for the SalesOrder model
+    Form for the Order model
     """
     product = forms.ModelChoiceField(
         queryset=Product.objects.all(),
@@ -53,24 +55,55 @@ class SalesOrderForm(forms.ModelForm):
         widget=Select2Widget)
 
     class Meta:
-        model = SalesOrder
-        fields = ['customer', 'product', 'status', 'total']
+        model = Order
+        fields = ['customer', 'product', 'quantity']
+
+    widgets = {
+        'customer': forms.Select(attrs={'class': 'form-control'}),
+        'product': forms.Select(attrs={'class': 'form-control'}),
+        'quantity': forms.NumberInput(attrs={'class': 'form-control'}),
+
+    }
+
+    def __init__(self, *args, **kwargs):
+        super(OrderForm, self).__init__(*args, **kwargs)
+        self.fields['customer'].label = ''
+        self.fields['product'].label = ''
+        self.fields['quantity'].label = ''
+
+        self.fields['customer'].widget.attrs['placeholder'] = 'Customer'
+        self.fields['product'].widget.attrs['placeholder'] = 'Product'
+        self.fields['quantity'].widget.attrs['placeholder'] = 'Quantity'
+
+
+class UpdateOrderForm(forms.ModelForm):
+    """
+    Form for the Update Order model
+    """
+    class Meta:
+        model = Order
+        fields = ['customer', 'product', 'status', 'quantity', 'total']
 
     widgets = {
         'customer': forms.Select(attrs={'class': 'form-control'}),
         'product': forms.Select(attrs={'class': 'form-control'}),
         'status': forms.Select(attrs={'class': 'form-control'}),
-        'total': forms.NumberInput(attrs={'class': 'form-control'}),
+        'quantity': forms.NumberInput(attrs={'class': 'form-control'}),
+        'total': forms.NumberInput(attrs={'class': 'form-control', 'readonly': True}),
     }
 
     def __init__(self, *args, **kwargs):
-        super(SalesOrderForm, self).__init__(*args, **kwargs)
+        super(UpdateOrderForm, self).__init__(*args, **kwargs)
         self.fields['customer'].label = ''
         self.fields['product'].label = ''
         self.fields['status'].label = ''
+        self.fields['quantity'].label = ''
         self.fields['total'].label = ''
 
         self.fields['customer'].widget.attrs['placeholder'] = 'Customer'
         self.fields['product'].widget.attrs['placeholder'] = 'Product'
         self.fields['status'].widget.attrs['placeholder'] = 'Status'
+        self.fields['quantity'].widget.attrs['placeholder'] = 'Quantity'
         self.fields['total'].widget.attrs['placeholder'] = 'Total'
+
+        self.fields['total'].disabled = True
