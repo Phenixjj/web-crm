@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
 from pathlib import Path
+
 from .env import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -41,6 +42,8 @@ INSTALLED_APPS = [
     'website',
     'products',
     'storages',
+    'sales',
+    'django_select2'
 ]
 
 MIDDLEWARE = [

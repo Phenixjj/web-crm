@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="col-md-6 offset-md-2 position-relative">
+        <h1>Customer Detail</h1>
+        <br>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-success" type="submit" name="update">Update</button>
+            <button class="btn btn-danger" type="submit" name="delete">Delete</button>
+        </form>
+    </div>
+{% endblock %}

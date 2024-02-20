@@ -7,10 +7,8 @@
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit" name="update">Update</button>
-            <button type="submit" name="delete">Delete</button>
+            <button class="btn btn-success" type="submit" name="update">Update</button>
+            <button class="btn btn-danger" type="submit" name="delete">Delete</button>
         </form>
-        <br>
-        <a href="{% url 'home_product' %}">Back to products</a>
     </div>
 {% endblock %}

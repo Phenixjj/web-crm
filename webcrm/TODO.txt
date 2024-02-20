@@ -1,0 +1,64 @@
+Product page :
+    - product add button
+    - list of the products
+    - product details :
+        - product name
+        - product description
+        - product price
+        - product image
+        - product add button
+        - product remove button
+        ========================
+        - product quantity
+        - product total price
+        - product stock quantity
+        - product category
+        - product stock alert
+        - product supplier
+        - product supplier time to deliver
+
+Customer page :
+    - customer add button
+    - list of the customers
+    - customer details :
+        - customer name
+        - customer email
+        - customer phone
+        - customer address
+        - customer add button
+        - customer remove button
+        ========================
+        - customer orders
+        - customer total orders
+        - customer total spent
+        - customer last order date
+        - customer last order total
+        - customer last order products
+        - customer last order status
+        - customer last order delivery date
+        - customer last order delivery status
+
+Sales page :
+    - sale add button
+    - list of the sales
+    - sale details :
+        - sale date
+        - sale total
+        - sale add button
+        - sale remove button
+        ========================
+        - sale products
+        - sale total products
+        - sale customer
+        - sale status
+        - sale delivery date
+        - sale delivery status
+
+========================
+Hook precommit & isort
+========================
+CICD + Tests
+========================
+Populate db with Faker module
+========================
+Cosmetic CSS & UX-UI

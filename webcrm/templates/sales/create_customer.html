@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="col-md-6 offset-md-2">
+    <h1>Add new customer</h1>
+    {% if user.is_authenticated %}
+        <br>
+        <form method="POST" action=".">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <br>
+            <form>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </form>
+</div>
+    {% else %}
+    <div class="col-md-6 offset-md-2">
+        <h1>You have to Log in or create an account</h1>
+        <a href="{% url 'home' %}">Back to home</a>
+    {% endif %}
+    </div>
+{% endblock %}
