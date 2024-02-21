@@ -88,18 +88,24 @@
                 <tbody>
                     {% for order in orders %}
                         <tr>
-                            <td>
+                            <td class="align-middle">
                                 <a href="{% url 'order_detail' order.order_id %}"
                                    class="text-black text-decoration-none">
                                 {{ order.order_id }}
                                 </a>
                             </td>
-                            <td>{{ order.date_created }}</td>
-                            <td>{{ order.customer }}</td>
-                            <td>{{ order.product }}</td>
-                            <td>{{ order.quantity }}</td>
-                            <td>{{ order.status }}</td>
-                            <td>{{ order.total }} €</td>
+                            <td class="align-middle">{{ order.date_created }}</td>
+                            <td class="align-middle">{{ order.customer }}</td>
+                            <td class="align-middle">{{ order.product }}</td>
+                            <td class="align-middle">{{ order.quantity }}</td>
+                            <td class="align-middle">{{ order.status }}</td>
+                            <td class="align-middle">{{ order.total }} €</td>
+                            <td class="align-middle">
+                                <form method="POST" action="{% url 'send_email' order.order_id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-info">Send Email</button>
+                                </form>
+                            </td>
                         </tr>
                     {% endfor %}
                 </tbody>
