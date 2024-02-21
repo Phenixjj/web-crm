@@ -1,0 +1,11 @@
+{% autoescape off %}  
+Hi {{ order.customer.name }},
+Your order has been placed successfully.
+Your order details are as follows:
+Order ID: {{ order.id }}
+Products: {{ order.products }}
+Quantity: {{ order.quantity }}
+Order Date: {{ order.date }}
+Order Total: {{ order.total }} €
+Thank you for shopping with us.
+{% endautoescape %}  

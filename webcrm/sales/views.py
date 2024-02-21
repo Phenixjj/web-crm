@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect, render
+from django.core.mail import EmailMessage
 
 from .forms import CustomerForm, OrderForm, UpdateOrderForm
 from .models import Customer, Order
@@ -78,3 +79,21 @@ def order_detail_view(request, order_id):
     else:
         form = UpdateOrderForm(instance=order)
     return render(request, 'sales/order_detail.html', {'form': form, 'order': order})
+
+
+def send_email(request, order_id):
+    order = get_object_or_404(Order, order_id=order_id)
+    if request.method == 'POST':
+
+        subject = 'Order Confirmation'
+        message = (f'Hi {order.customer.name},\n\nYour order has been confirmed.\n\nOrder ID: '
+                   f'{order.order_id}\n\nProduct: {order.product.name}\n\nPrice: {order.product.price}\n\nQuantity: '
+                   f'{order.quantity}\n\nTotal: {order.total}\n\nThank you for shopping with us.\n\n'
+                   f'Best Regards,\n\nSales Team')
+        to_email = order.customer.email
+        email = EmailMessage(
+            subject, message, to=[to_email]
+        )
+        email.send()
+        return redirect('home_sales')
+    return render(request, 'sales/order_detail.html')

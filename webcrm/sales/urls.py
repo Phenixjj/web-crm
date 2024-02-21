@@ -11,4 +11,5 @@ urlpatterns = [
     path('customer-detail/<str:handle>/', views.customer_detail_view, name='customer_detail'),
     path('customer-delete/<str:handle>/', views.customer_delete_view, name='customer_delete'),
     path('order-detail/<str:order_id>/', views.order_detail_view, name='order_detail'),
+    path('send_email/<str:order_id>/', views.send_email, name='send_email'),
 ]
