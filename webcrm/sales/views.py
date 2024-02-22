@@ -1,9 +1,11 @@
 from django.contrib import messages
+from django.http import FileResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.core.mail import EmailMessage
 
 from .forms import CustomerForm, OrderForm, UpdateOrderForm
-from .models import Customer, Order
+from .models import Customer, Order, Invoice
+from .pdf import PDF
 
 
 # Create your views here.
@@ -97,3 +99,18 @@ def send_email(request, order_id):
         email.send()
         return redirect('home_sales')
     return render(request, 'sales/order_detail.html')
+
+
+def invoice_pdf_view(request, order_id):
+    order = get_object_or_404(Order, order_id=order_id)
+    if request.method == 'POST':
+        invoice, created = Invoice.objects.get_or_create(order=order)
+        pdf = PDF(f"{order.order_id}")
+        pdf.create_invoice(invoice)
+
+        f = open(pdf.file_name, 'rb')
+        response = FileResponse(f, content_type='application/pdf')
+        response['Content-Disposition'] = f'attachment; filename={pdf.file_name}'
+        return response
+    return render(request, 'sales/order_detail.html')
+
