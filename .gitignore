@@ -35,7 +35,8 @@ media
 .vscode/
 
 # Minio
-minio/
+
+../minio/
 
 # Environtment
 .env

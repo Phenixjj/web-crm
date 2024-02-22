@@ -5,7 +5,7 @@
   {% if user.is_authenticated %}
   <div class="container">
     <div class="d-flex justify-content-between align-items-center">
-      <h1>All customer & orders</h1>
+      <h1>All customers & orders</h1>
       <div>
         <button class="btn btn-primary"><a href="{% url 'create_customer' %}" class="text-white text-decoration-none"> + New Customer</a></button>
         <button class="btn btn-success"><a href="{% url 'create_sale' %}" class="text-white text-decoration-none"> + New Order </a></button>
@@ -59,8 +59,8 @@
                                                🖊️
                                         </a>
                                         <button
-                                                type="submit"
-                                                class="btn btn-link text-black text-decoration-none">🗑️
+                                            type="submit"
+                                            class="btn btn-link text-black text-decoration-none">🗑️
                                         </button>
                                     </form>
                                 </div>
@@ -82,7 +82,8 @@
                         <th>Quantity</th>
                         <th>Status</th>
                         <th>Total</th>
-                        <th></th>
+                        <th>Mail</th>
+                        <th>Invoice</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -103,9 +104,16 @@
                             <td class="align-middle">
                                 <form method="POST" action="{% url 'send_email' order.order_id %}">
                                 {% csrf_token %}
-                                <button type="submit" class="btn btn-info">Send Email</button>
+                                <button type="submit" class="btn btn-link text-black text-decoration-none">📧</button>
                                 </form>
                             </td>
+                             <td class="align-middle">
+                                <form method="POST" action="{% url 'create_invoice' order.order_id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-link text-black text-decoration-none">🧾</button>
+                                </form>
+                            </td>
+
                         </tr>
                     {% endfor %}
                 </tbody>
