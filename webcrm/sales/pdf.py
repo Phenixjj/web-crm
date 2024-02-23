@@ -1,8 +1,9 @@
-from reportlab.pdfgen import canvas
-from reportlab.lib.pagesizes import letter
+import os
+
 from django.conf import settings
 from PIL import Image
-import os
+from reportlab.lib.pagesizes import letter
+from reportlab.pdfgen import canvas
 
 
 class PDF:

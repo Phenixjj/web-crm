@@ -29,6 +29,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+DJANGO_SETTINGS_MODULE = "webcrm.settings"
 
 # Application definition
 
@@ -77,10 +78,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'webcrm.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
