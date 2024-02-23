@@ -1,10 +1,11 @@
+import datetime as dt
+
 from django.db import models
+from django.utils import timezone
 
 from products.models import Product
-from products.tools.utils import random_slug_generator, random_integer_generator
-
-import datetime as dt
-from django.utils import timezone
+from products.tools.utils import (random_integer_generator,
+                                  random_slug_generator)
 
 
 # Create your models here.

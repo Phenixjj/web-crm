@@ -1,5 +1,7 @@
+from unidecode import unidecode
 import random
 import string
+import re
 
 
 def random_slug_generator():
@@ -9,3 +11,12 @@ def random_slug_generator():
 
 def random_integer_generator():
     return random.randint(0, 99999)
+
+
+def slugify_with_underscore(value):
+    value = unidecode(value)  # remove accents
+    tmp = value.replace("'", '')
+    tmp = tmp.replace('(', '')
+    tmp = tmp.replace(')', '')
+    res = tmp.replace(' ', '_')
+    return res

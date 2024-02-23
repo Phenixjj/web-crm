@@ -1,10 +1,10 @@
 from django.contrib import messages
+from django.core.mail import EmailMessage
 from django.http import FileResponse
 from django.shortcuts import get_object_or_404, redirect, render
-from django.core.mail import EmailMessage
 
 from .forms import CustomerForm, OrderForm, UpdateOrderForm
-from .models import Customer, Order, Invoice
+from .models import Customer, Invoice, Order
 from .pdf import PDF
 
 

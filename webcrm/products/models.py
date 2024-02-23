@@ -1,7 +1,8 @@
+import unidecode
 from django.core.files.storage import get_storage_class
 from django.db import models
 
-from .tools.utils import random_slug_generator
+from .tools.utils import random_slug_generator, slugify_with_underscore
 
 
 # Create products model
@@ -19,20 +20,21 @@ class Product(models.Model):
         return self.name
 
     def save(self, *args, **kwargs):
-        print("IMG => ", self.image)
         if not self.handle:
             handle = f"{self.name}-{random_slug_generator()}"
             self.handle = handle
-        print("BEFORE SAVE => ")
-        super().save(*args, **kwargs)
-        print("AFTER SAVE => ", self.generate_s3_url())
-        self.image_url = self.generate_s3_url()
+        # super().save(*args, **kwargs)
+        self.image_url = self.generate_s3_url('products')
         super().save(*args, **kwargs)
 
-    def generate_s3_url(self):
+    def generate_s3_url(self, folder):
         try:
             if self.image:
-                tmp = get_storage_class()().url(self.image.name)
+                print("STORAGE => ", get_storage_class()())
+                print("IMG", self.image.name)
+                print("clean_name => ", slugify_with_underscore(self.image.name))
+                tmp = get_storage_class()().url(f"{folder}/{slugify_with_underscore(self.image.name)}")
+                print("TMP => ", tmp)
                 name = tmp.split("?")[0]
                 # replace minio with localhost
                 return name.replace("minio", "localhost")
