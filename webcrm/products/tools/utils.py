@@ -1,7 +1,8 @@
-from unidecode import unidecode
 import random
-import string
 import re
+import string
+
+from unidecode import unidecode
 
 
 def random_slug_generator():
