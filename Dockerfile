@@ -13,8 +13,8 @@ ENV PYTHONUNBUFFERED=1
 
 WORKDIR /webcrm
 
-COPY webcrm/requirements.txt /webcrm/
+COPY requirements.txt /webcrm/
 RUN pip install -r requirements.txt
-RUN python -m pip install Pillow django_select2 django-storages boto3 django-recaptcha reportlab pytest-django
+RUN python -m pip install Pillow django_select2 django-storages boto3 django-recaptcha reportlab pytest-django unidecode
 
 COPY . .
