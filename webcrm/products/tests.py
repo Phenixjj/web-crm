@@ -4,8 +4,8 @@ import pytest
 from django.db import transaction
 from django.test import TestCase, TransactionTestCase
 
-from products.models import Product
-from products.forms import ProductForm
+from .forms import ProductForm
+from .models import Product
 
 
 class ProductTestCase(TransactionTestCase):

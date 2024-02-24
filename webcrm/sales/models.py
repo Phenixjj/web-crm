@@ -106,5 +106,5 @@ class Invoice(models.Model):
             "total": str(self.total),
             "due_date": str(self.due_date),
             "status": str(self.order.status),
-            "date_created": str(self.date_created)
+            "date_created": str(dt.datetime.now())
         }

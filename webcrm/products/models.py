@@ -30,11 +30,7 @@ class Product(models.Model):
     def generate_s3_url(self, folder):
         try:
             if self.image:
-                print("STORAGE => ", get_storage_class()())
-                print("IMG", self.image.name)
-                print("clean_name => ", slugify_with_underscore(self.image.name))
                 tmp = get_storage_class()().url(f"{folder}/{slugify_with_underscore(self.image.name)}")
-                print("TMP => ", tmp)
                 name = tmp.split("?")[0]
                 # replace minio with localhost
                 return name.replace("minio", "localhost")
