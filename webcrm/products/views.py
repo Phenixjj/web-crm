@@ -34,12 +34,12 @@ def product_detail_view(request, handle):
             product.delete()
             messages.success(request, 'Product deleted successfully')
             return redirect('home_product')
-        else:
+        elif 'update' in request.POST:
             form = ProductForm(request.POST, request.FILES, instance=product)
             if form.is_valid():
                 form.save()
                 messages.success(request, 'Product updated successfully')
-                return redirect('product_detail', handle=handle)
+                return redirect('home_product')
     else:
         form = ProductUpdateForm(instance=product)
     return render(request, 'products/product_detail.html', {'form': form, 'product': product})
