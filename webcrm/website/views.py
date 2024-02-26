@@ -3,19 +3,19 @@ from django.contrib.auth import authenticate, get_user_model, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMessage
-from django.db.models import Count
+from django.db.models import Sum, Count
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 
-from products.models import Product
 from sales.models import Customer, Order
 
 from .decorators import user_not_authenticated
 from .forms import LoginForm, SignUpForm
 from .token import account_activation_token
+
 
 # Create your views here.
 
@@ -103,11 +103,21 @@ def login_user(request):
 
 
 def dashboard(request):
-
     # Fetch the last order for the logged-in user
     last_order = Order.objects.order_by('-date_created').first()
 
     # Fetch the sales data for all products
-    # product_sales = Product.objects.annotate(sales=Count('handle')).values('handle', 'sales')
-    return render(request, 'website/dashboard.html', {'last_order': last_order})
-                  # {'last_order': last_order, 'product_sales': product_sales})
+    product_sales = Order.objects.all().values('product__name').annotate(total_sales=Sum('quantity'))
+    products_types_order = Order.objects.all().values('product__name').annotate(total_order=Count('product'))
+
+    products, sales = [], []
+    for i in product_sales:
+        products.append(i['product__name'])
+        sales.append(i['total_sales'])
+    product_order = []
+
+    for i in products_types_order:
+        product_order.append(i['total_order'])
+
+    return render(request, 'website/dashboard.html',
+                  dict(last_order=last_order, products=products, sales=sales, product_order=product_order))
