@@ -38,8 +38,7 @@ def create_sales_order_view(request):
     form = OrderForm(request.POST or None)
     if form.is_valid():
         form.save()
-        form = OrderForm()
-        return render(request, 'sales/create_order.html', {'form': form})
+        return redirect('home_sales')
     if 'cancel' in request.POST:
         return render(request, 'sales/home_sales.html')
     return render(request, 'sales/create_order.html', {'form': form})

@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expend-xl navbar-expand-lg navbar-light bg-light">
   {% load static %}
   <img src="{% static 'assets/logo-crm.png' %}" alt="logo-crm" style="margin-left: 40px; margin-right: 20px; width: 3%">
-  <a class="navbar-brand" href="#">DashBoard</a>
+  <a class="navbar-brand" href="{% url 'dashboard' %}">DashBoard</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>

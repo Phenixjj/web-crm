@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{% csrf_token %}
+  {% if user.is_authenticated %}
+    <div class="container">
+         <div class="row">
+            <div class="col-md-12">
+            <h1>Dashboard</h1>
+            <p>Welcome {{ user.username }}</p>
+                <div class="card" style="width: 24rem;">
+                    <div class="card-header align-middle">
+                        <h5 class="card-title">Last Order : {{ last_order.product }}</h5>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">Order id : {{ last_order.order_id }}, Status : {{ last_order.status}}</h6>
+                        <p class="card-text">Quantity: {{ last_order.quantity }} <br> Price: {{ last_order.total }}</p>
+                        <button class="btn btn-primary">
+                            <a href="{% url 'order_detail' last_order.order_id %}" class="text-decoration-none text-white">Detail</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <br>
+            <h2>CHART</h2>
+            <br>
+            <div class="row">
+
+                <div class="d-flex justify-content-start" style="width: 60%;">
+                    <canvas id="salesChart"></canvas>
+                </div>
+                <div class="d-flex justify-content-end" style="width: 30%;">
+                    <canvas id="productsChart"></canvas>
+                </div>
+            </div>
+
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script>
+               var config1 = {
+                  type: 'bar',
+                  data: {
+                    datasets: [{
+                      data: {{ sales|safe }},
+                      backgroundColor: [
+                        '#861BF2', '#3E22F2', '#0583F2', '#F27405', '#F23D3D'
+                      ],
+                      label: 'Sales'
+                    }],
+                    labels: {{ products|safe }}
+                  },
+                  options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                          display: true,
+                          text: 'Sales Chart',
+                          fontSize: 20
+                        }
+                    }
+                  }
+                };
+
+               var config2 = {
+                  type: 'doughnut',
+                  data: {
+                    datasets: [{
+                      data: {{ product_order|safe }},
+                      backgroundColor: [
+                        '#861BF2', '#3E22F2', '#0583F2', '#F27405', '#F23D3D'
+                      ],
+                      label: 'Sales'
+                    }],
+                    labels: {{ products|safe }}
+                  },
+                  options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                          display: true,
+                          text: 'Product Order Chart',
+                          fontSize: 20
+                        }
+                    }
+                  }
+                };
+
+                window.onload = function() {
+                  var ctx1 = document.getElementById('salesChart').getContext('2d');
+                  window.productsChart = new Chart(ctx1, config1);
+
+                  var ctx2 = document.getElementById('productsChart').getContext('2d');
+                  window.productsTypeChart = new Chart(ctx2, config2);
+                };
+            </script>
+        </div>
+    {% else %}
+        <div class="container">
+            <h1>You have to Log in or create an account</h1>
+            <a href="{% url 'home' %}">Back to home</a>
+        </div>
+    {% endif %}
+</div>
+
+
+{% endblock %}
