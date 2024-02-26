@@ -3,11 +3,15 @@ from django.contrib.auth import authenticate, get_user_model, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMessage
+from django.db.models import Count
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
+
+from products.models import Product
+from sales.models import Customer, Order
 
 from .decorators import user_not_authenticated
 from .forms import LoginForm, SignUpForm
@@ -67,7 +71,7 @@ def activate(request, uidb64, token):
         user.save()
         login(request, user)
         messages.success(request, 'Your account has been activated successfully')
-        return redirect('home')
+        return redirect('dashboard')
     else:
         return HttpResponse('Activation link is invalid!')
 
@@ -88,7 +92,7 @@ def login_user(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('home')
+                return redirect('dashboard')
             else:
                 messages.success(request, 'Username OR password is incorrect')
     else:
@@ -96,3 +100,14 @@ def login_user(request):
         messages.success(request, 'You have to resolve captcha first.')
         print("resolve captcha first.")
     return render(request, 'website/login.html', {'form': form})
+
+
+def dashboard(request):
+
+    # Fetch the last order for the logged-in user
+    last_order = Order.objects.order_by('-date_created').first()
+
+    # Fetch the sales data for all products
+    # product_sales = Product.objects.annotate(sales=Count('handle')).values('handle', 'sales')
+    return render(request, 'website/dashboard.html', {'last_order': last_order})
+                  # {'last_order': last_order, 'product_sales': product_sales})

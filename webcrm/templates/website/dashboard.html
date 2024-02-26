@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{% csrf_token %}
+  {% if user.is_authenticated %}
+    <div class="container">
+         <div class="row">
+            <div class="col-md-12">
+            <h1>Dashboard</h1>
+            <p>Welcome {{ user.username }}</p>
+                <div class="card" style="width: 24rem;">
+                    <div class="card-header align-middle">
+                        <h5 class="card-title">Last Order : {{ last_order.product }}</h5>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">Order id : {{ last_order.order_id }}, Status : {{ last_order.status}}</h6>
+                        <p class="card-text">Quantity: {{ last_order.quantity }} <br> Price: {{ last_order.total }}</p>
+                        <button class="btn btn-primary">
+                            <a href="{% url 'order_detail' last_order.order_id %}" class="text-decoration-none text-white">Detail</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h2>Product Sales</h2>
+    {% else %}
+        <div class="container">
+            <h1>You have to Log in or create an account</h1>
+            <a href="{% url 'home' %}">Back to home</a>
+        </div>
+    {% endif %}
+</div>
+
+
+{% endblock %}
