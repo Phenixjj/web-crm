@@ -24,10 +24,25 @@ services:
       /usr/bin/mc policy set none myminio/test;
       "
   web:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     command: python webcrm/manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/Code
     ports:
       - "8000:8000"
     container_name: webcrm
+
+  bot:
+    build:
+      context:  ./bot-api
+      dockerfile: Dockerfile
+    command: uvicorn main:app --host 0.0.0.0 --port 5000
+    volumes:
+      - ./bot-api:/bot-api
+    container_name: bot-api
+    ports:
+      - "5001:5000"
+    depends_on:
+        - web
