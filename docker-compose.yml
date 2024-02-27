@@ -1,4 +1,17 @@
 services:
+  ollama:
+    image: ollama/ollama
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    expose:
+      - "11434"
+    volumes:
+      - ollama_data:/app
+    networks:
+      - net
+    command: >
+      serve && pull mistral
   minio:
     image: minio/minio
     hostname: "minio"
@@ -36,13 +49,24 @@ services:
 
   bot:
     build:
-      context:  ./bot-api
+      context:  ./bot_api
       dockerfile: Dockerfile
     command: uvicorn main:app --host 0.0.0.0 --port 5000
     volumes:
-      - ./bot-api:/bot-api
-    container_name: bot-api
+      - ./bot_api:/bot_api
+    container_name: bot_api
     ports:
       - "5001:5000"
     depends_on:
         - web
+        - ollama
+    networks:
+      - net
+
+volumes:
+  ollama_data:
+    driver: local
+
+networks:
+  net:
+    driver: bridge
