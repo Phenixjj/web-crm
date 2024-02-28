@@ -4,12 +4,9 @@ import json
 
 def pull_model(model_name):
     pull_command = f"""curl -s http://ollama:11434/api/pull -d '{{"name": "{model_name}"}}'"""
-    try:
-        process = subprocess.Popen(pull_command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-        process.communicate()
-        return {"Response": f"Model {model_name} pulled successfully"}
-    except Exception as e:
-        return {"Response": f"Failed to pull model: {str(e)}"}
+
+    process = subprocess.Popen(pull_command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    process.communicate()
 
 
 def generate_response(prompt):

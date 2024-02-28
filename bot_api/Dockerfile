@@ -24,7 +24,7 @@ RUN pip install -r requirements-bot.txt
 RUN pip install requests
 
 # Copy the current directory contents into the container at /bot-api
-COPY . /bot_api/
+COPY . /bot-api/
 
 WORKDIR /bot_api/api
 
