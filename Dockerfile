@@ -15,6 +15,6 @@ WORKDIR /webcrm
 
 COPY requirements.txt /webcrm/
 RUN pip install -r requirements.txt
-RUN python -m pip install Pillow django_select2 django-storages boto3 django-recaptcha reportlab pytest-django unidecode
+RUN python -m pip install Pillow django_select2 django-storages boto3 django-recaptcha reportlab pytest-django unidecode django-cors-headers
 
 COPY . .
