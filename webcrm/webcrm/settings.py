@@ -34,6 +34,7 @@ DJANGO_SETTINGS_MODULE = "webcrm.settings"
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -46,6 +47,10 @@ INSTALLED_APPS = [
     'sales',
     'django_select2',
     'django_recaptcha',
+    'chat',
+    'channels',
+    'channels_redis',
+
 ]
 
 MIDDLEWARE = [
@@ -77,6 +82,15 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'webcrm.wsgi.application'
+ASGI_APPLICATION = "webcrm.asgi.application"
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG":   {
+            "hosts": [("redis", 6379)],
+        },
+    }
+}
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
