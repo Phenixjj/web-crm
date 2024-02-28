@@ -25,6 +25,7 @@ daphne==4.1.0
 dj-database-url==2.1.0
 Django==5.0.2
 django-appconf==1.0.6
+django-cors-headers==4.3.1
 django-minio-storage==0.5.7
 django-recaptcha==4.0.0
 django-select2==8.1.2

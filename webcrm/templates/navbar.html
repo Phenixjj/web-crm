@@ -19,9 +19,12 @@
       </li>
     </ul>
   </div>
-  <div class="d-flex align-items-center col-2">
+  <div class="d-flex align-items-center col-3">
     {% if user.is_authenticated %}
-      <p class="mb-0" style="margin-right: 25px;">Welcome, {{ user.username }}!</p>
+      <div id="chat-icon">
+        <button type="button" class="btn btn-info text-white" data-toggle="modal" data-target="#chatModal">Chat IA</button>
+      </div>
+      <p class="mb-0" style="margin-left: 25px; margin-right: 25px;">Welcome, {{ user.username }}!</p>
       <button type="button" class="btn btn-secondary ml-20 mr-5"><a href="{% url 'logout' %}" class="text-white text-decoration-none">Logout</a></button>
     {% else %}
       <p class="mb-0" style="margin-right: 25px;">Welcome, guest!</p>

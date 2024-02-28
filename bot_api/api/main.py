@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from bot import bot
 
@@ -8,6 +9,16 @@ class MessageInput(BaseModel):
 
 
 app = FastAPI()
+origins = [
+    "http://localhost:8000",
+]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/")
@@ -32,7 +43,6 @@ def model(input_user: MessageInput):
         return response
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
-
 
 
 if __name__ == '__main__':
