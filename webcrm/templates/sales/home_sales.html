@@ -13,114 +13,113 @@
     </div>
     <br>
     <div class="container">
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link active text-black text-decoration-none" data-bs-toggle="tab" href="#customers">Customers</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-black text-decoration-none" data-bs-toggle="tab" href="#orders">Orders</a>
-        </li>
-    </ul>
-    <div class="tab-content">
-        <div class="tab-pane fade show active" id="customers">
-            <h2>Customers</h2>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Address</th>
-                        <th>Company</th>
-                        <th></th>
-                        <!-- Add more columns as needed -->
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for customer in customers %}
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active text-black text-decoration-none" data-bs-toggle="tab" href="#customers">Customers</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-black text-decoration-none" data-bs-toggle="tab" href="#orders">Orders</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane fade show active" id="customers">
+                <h2>Customers</h2>
+                <table class="table">
+                    <thead>
                         <tr>
-                            <td class="align-middle">
-                                <a href="{% url 'customer_detail' customer.handle %}"
-                                   class="text-black text-decoration-none">
-                                {{ customer.name }}
-                                </a>
-                            </td>
-                            <td class="align-middle">{{ customer.email }}</td>
-                            <td class="align-middle">{{ customer.phone }}</td>
-                            <td class="align-middle">{{ customer.address }}</td>
-                            <td class="align-middle">{{ customer.company }}</td>
-                            <td class="align-middle">
-                                <div class="d-flex justify-content-between">
-                                    <form method="POST" action="{% url 'customer_delete' customer.handle %}">
-                                        {% csrf_token %}
-                                        <a
-                                            href="{% url 'customer_detail' customer.handle %}"
-                                            class="text-black text-decoration-none">
-                                               🖊️
-                                        </a>
-                                        <button
-                                            type="submit"
-                                            class="btn btn-link text-black text-decoration-none">🗑️
-                                        </button>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Address</th>
+                            <th>Company</th>
+                            <th></th>
+                            <!-- Add more columns as needed -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for customer in customers %}
+                            <tr>
+                                <td class="align-middle">
+                                    <a href="{% url 'customer_detail' customer.handle %}"
+                                       class="text-black text-decoration-none">
+                                    {{ customer.name }}
+                                    </a>
+                                </td>
+                                <td class="align-middle">{{ customer.email }}</td>
+                                <td class="align-middle">{{ customer.phone }}</td>
+                                <td class="align-middle">{{ customer.address }}</td>
+                                <td class="align-middle">{{ customer.company }}</td>
+                                <td class="align-middle">
+                                    <div class="d-flex justify-content-between ">
+                                        <form method="POST" action="{% url 'customer_delete' customer.handle %}">
+                                            {% csrf_token %}
+                                            <a
+                                                href="{% url 'customer_detail' customer.handle %}"
+                                                class="text-black text-decoration-none">
+                                                   🖊️
+                                            </a>
+                                            <button
+                                                type="submit"
+                                                class="btn btn-link text-black text-decoration-none">🗑️
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="orders">
+                <h2>Orders</h2>
+               <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Order_id</th>
+                            <th>Date</th>
+                            <th>Customer</th>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Status</th>
+                            <th>Total</th>
+                            <th>Mail</th>
+                            <th>Invoice</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in orders %}
+                            <tr>
+                                <td class="align-middle">
+                                    <a href="{% url 'order_detail' order.order_id %}"
+                                       class="text-black text-decoration-none">
+                                    {{ order.order_id }}
+                                    </a>
+                                </td>
+                                <td class="align-middle">{{ order.date_created }}</td>
+                                <td class="align-middle">{{ order.customer }}</td>
+                                <td class="align-middle">{{ order.product }}</td>
+                                <td class="align-middle">{{ order.quantity }}</td>
+                                <td class="align-middle">{{ order.status }}</td>
+                                <td class="align-middle">{{ order.total }} €</td>
+                                <td class="align-middle">
+                                    <form method="POST" action="{% url 'send_email' order.order_id %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-link text-black text-decoration-none">📧</button>
                                     </form>
-                                </div>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-        <div class="tab-pane fade" id="orders">
-            <h2>Orders</h2>
-           <table class="table">
-                <thead>
-                    <tr>
-                        <th>Order_id</th>
-                        <th>Date</th>
-                        <th>Customer</th>
-                        <th>Product</th>
-                        <th>Quantity</th>
-                        <th>Status</th>
-                        <th>Total</th>
-                        <th>Mail</th>
-                        <th>Invoice</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for order in orders %}
-                        <tr>
-                            <td class="align-middle">
-                                <a href="{% url 'order_detail' order.order_id %}"
-                                   class="text-black text-decoration-none">
-                                {{ order.order_id }}
-                                </a>
-                            </td>
-                            <td class="align-middle">{{ order.date_created }}</td>
-                            <td class="align-middle">{{ order.customer }}</td>
-                            <td class="align-middle">{{ order.product }}</td>
-                            <td class="align-middle">{{ order.quantity }}</td>
-                            <td class="align-middle">{{ order.status }}</td>
-                            <td class="align-middle">{{ order.total }} €</td>
-                            <td class="align-middle">
-                                <form method="POST" action="{% url 'send_email' order.order_id %}">
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-link text-black text-decoration-none">📧</button>
-                                </form>
-                            </td>
-                             <td class="align-middle">
-                                <form method="POST" action="{% url 'create_invoice' order.order_id %}">
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-link text-black text-decoration-none">🧾</button>
-                                </form>
-                            </td>
-
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+                                </td>
+                                 <td class="align-middle">
+                                    <form method="POST" action="{% url 'create_invoice' order.order_id %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-link text-black text-decoration-none">🧾</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
   </div>
   {% else %}
   <div class="container">

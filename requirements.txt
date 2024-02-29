@@ -30,6 +30,7 @@ django-minio-storage==0.5.7
 django-recaptcha==4.0.0
 django-select2==8.1.2
 django-storages==1.14.2
+Faker==23.3.0
 h11==0.14.0
 httptools==0.6.1
 hyperlink==21.0.0
