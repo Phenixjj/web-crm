@@ -1,19 +1,21 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 {% csrf_token %}
 {% if user.is_authenticated %}
 <div class="container">
-    <h1>Chat Teams </h1>
+    <h1>Chat Teams</h1>
     <h3>Current Room: {{ room_name }}</h3>
     <textarea id="chat-log" cols="100" rows="20"></textarea><br>
     <input id="chat-message-input" type="text" size="100"><br>
     <input id="chat-message-submit" type="button" value="Send">
     {{ room_name|json_script:"room-name" }}
+    <script src="{% static 'reconnecting-websocket.js' %}"></script>
     <script>
         const roomName = JSON.parse(document.getElementById('room-name').textContent);
 
-        const chatSocket = new WebSocket(
+        const chatSocket = new ReconnectingWebSocket(
             'ws://'
             + window.location.host
             + '/ws/chat/'
@@ -21,9 +23,19 @@
             + '/'
         );
 
+        chatSocket.onopen = function(e) {
+            fetchMessages();
+        };
+
         chatSocket.onmessage = function(e) {
             const data = JSON.parse(e.data);
-            document.querySelector('#chat-log').value += (data.message + '\n');
+            if (data.command === 'messages') {
+                for (let i = 0; i < data.messages.length; i++) {
+                    createMessage(data.messages[i]);
+                }
+            } else if (data.command === 'new_message') {
+                createMessage(data.message);
+            }
         };
 
         chatSocket.onclose = function(e) {
@@ -41,10 +53,40 @@
             const messageInputDom = document.querySelector('#chat-message-input');
             const message = messageInputDom.value;
             chatSocket.send(JSON.stringify({
-                'message': message
+                'message': message,
+                'command': 'new_message',
+                'from': '{{ user.username }}'
             }));
             messageInputDom.value = '';
         };
+
+        function fetchMessages() {
+            chatSocket.send(JSON.stringify({
+                'command': 'fetch_messages',
+            }));
+        }
+
+        function createMessage(data) {
+            const author = data.author;
+            const message = data.content;
+            const date = new Date(data.timestamp);
+
+            let formattedDate;
+            const today = new Date();
+
+            // Check if the message is from today
+            if (date.toDateString() === today.toDateString()) {
+                // Format time only
+                formattedDate = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            } else {
+                // Format date and time (hours and minutes only)
+                formattedDate = date.toLocaleDateString([], { year: 'numeric', month: 'short', day: 'numeric' })
+                              + " " + date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            }
+
+            document.querySelector('#chat-log').value += (author + ' (' + formattedDate + '): ' + message + '\n');
+        }
+
     </script>
 </div>
 {% else %}
