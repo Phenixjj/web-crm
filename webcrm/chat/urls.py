@@ -4,6 +4,6 @@ from . import views
 
 
 urlpatterns = [
-    path("", views.index, name="index"),
+    path("", views.chat_lobby, name="lobby"),
     re_path(r'^(?P<room_name>\S+)/$', views.room, name='room'),
 ]

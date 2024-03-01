@@ -1,15 +1,16 @@
-<!-- chat/templates/chat/index.html -->
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8"/>
-    <title>Chat Rooms</title>
-</head>
-<body>
-    What chat room would you like to enter?<br>
-    <input id="room-name-input" type="text" size="100"><br>
-    <input id="room-name-submit" type="button" value="Enter">
+{% extends 'base.html' %}
 
+{% block content %}
+{% csrf_token %}
+{% if user.is_authenticated %}
+<div class="container">
+    <h1>Chat Teams</h1>
+    <h3>Create a chat room</h3>
+    What chat room would you like to enter?<br>
+    <div class="d-flex align-items-center">
+        <input style="margin-right: 25px;" id="room-name-input" type="text" size="100"><br>
+        <button class="btn btn-primary text-white" id="room-name-submit" type="button" value="Enter">Enter</button>
+    </div>
     <script>
         document.querySelector('#room-name-input').focus();
         document.querySelector('#room-name-input').onkeyup = function(e) {
@@ -23,5 +24,11 @@
             window.location.pathname = '/chat/' + roomName + '/';
         };
     </script>
-</body>
-</html>
+</div>
+{% else %}
+<div class="container">
+    <h1>You have to Log in or create an account</h1>
+    <a href="{% url 'home' %}">Back to home</a>
+</div>
+{% endif %}
+{% endblock %}
