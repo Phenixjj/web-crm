@@ -1,7 +1,7 @@
 import json
 from asgiref.sync import async_to_sync
 from channels.generic.websocket import WebsocketConsumer
-from .models import Message
+from .models import Message, Chat
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
@@ -10,12 +10,30 @@ User = get_user_model()
 class ChatConsumer(WebsocketConsumer):
 
     def fetch_messages(self, data):
-        messages = Message.last_10_messages()
-        content = {
-            "command": "messages",
-            "messages": self.messages_to_json(messages)
-        }
-        self.send_message(content)
+        room_name = data.get('room_name')  # Get the room_name from the data
+        if room_name:
+            try:
+                chat = Chat.objects.get(name=room_name)  # Assuming 'name' is the field representing the room name
+                messages = chat.messages.order_by('-timestamp')[:10]  # Fetch last 10 messages related to the chat room
+                content = {
+                    "command": "messages",
+                    "messages": self.messages_to_json(messages)
+                }
+                self.send_message(content)
+            except Chat.DoesNotExist:
+                # Handle the case where the chat room doesn't exist
+                error_message = {
+                    "command": "error",
+                    "error": f"Chat room '{room_name}' not found."
+                }
+                self.send_message(error_message)
+        else:
+            # Handle the case where room_name is not provided
+            error_message = {
+                "command": "error",
+                "error": "Room name is required to fetch messages."
+            }
+            self.send_message(error_message)
 
     def new_message(self, data):
         author = data["from"]

@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 {% csrf_token %}
@@ -6,24 +7,91 @@
 <div class="container">
     <h1>Chat Teams</h1>
     <h3>Create a chat room</h3>
-    What chat room would you like to enter?<br>
-    <div class="d-flex align-items-center">
-        <input style="margin-right: 25px;" id="room-name-input" type="text" size="100"><br>
-        <button class="btn btn-primary text-white" id="room-name-submit" type="button" value="Enter">Enter</button>
+    <div class="form-group">
+        <label for="room-name-input">Chat Room Name:</label>
+        <input id="room-name-input" type="text" class="form-control" placeholder="Enter room name">
     </div>
-    <script>
-        document.querySelector('#room-name-input').focus();
-        document.querySelector('#room-name-input').onkeyup = function(e) {
-            if (e.key === 'Enter') {  // enter, return
-                document.querySelector('#room-name-submit').click();
-            }
-        };
+    <div class="form-group">
+        <h3>Choose Participants</h3>
+        <div class="row">
+            {% for user in all_users %}
+                <div class="col-md-4">
+                    <input type="checkbox" id="{{ user.username }}" value="{{ user.username }}">
+                    <label for="{{ user.username }}">{{ user.username }}</label>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <button class="btn btn-primary" id="room-name-submit">Create Room</button>
+</div>
 
-        document.querySelector('#room-name-submit').onclick = function(e) {
-            var roomName = document.querySelector('#room-name-input').value;
-            window.location.pathname = '/chat/' + roomName + '/';
-        };
-    </script>
+<script>
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    const csrftoken = getCookie('csrftoken');
+
+    document.querySelector('#room-name-input').focus();
+    document.querySelector('#room-name-input').addEventListener('keyup', function(event) {
+        if (event.key === 'Enter') {
+            document.querySelector('#room-name-submit').click();
+        }
+    });
+
+    document.querySelector('#room-name-submit').addEventListener('click', function() {
+        var roomName = document.querySelector('#room-name-input').value.trim();
+        var participants = [];
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+        checkboxes.forEach(function(checkbox) {
+            participants.push(checkbox.value);
+        });
+
+        if (roomName !== '' && participants.length > 0) {
+            // Send room name and participants to backend
+            fetch('/chat/create_chat/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken
+                },
+                body: JSON.stringify({ room_name: roomName, participants: participants })
+            }).then(response => {
+                // Handle response from backend
+                if (response.ok) {
+                    window.location.pathname = '/chat/' + roomName + '/';
+                } else {
+                    console.error('Error creating chat room');
+                }
+            }).catch(error => {
+                console.error('Error creating chat room:', error);
+            });
+        }
+    });
+</script>
+
+<div class="container">
+    <h1>Chats</h1>
+    {% if user_chats %}
+    <ul>
+        {% for chat in user_chats %}
+        <li><a href="{% url 'chat_room' room_name=chat.room_name %}">Chat with {{ chat }}</a></li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No chats available.</p>
+    {% endif %}
 </div>
 {% else %}
 <div class="container">
