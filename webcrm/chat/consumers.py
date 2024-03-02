@@ -13,8 +13,8 @@ class ChatConsumer(WebsocketConsumer):
         room_name = data.get('room_name')  # Get the room_name from the data
         if room_name:
             try:
-                chat = Chat.objects.get(name=room_name)  # Assuming 'name' is the field representing the room name
-                messages = chat.messages.order_by('-timestamp')[:10]  # Fetch last 10 messages related to the chat room
+                chat = Chat.objects.get(room_name=room_name)
+                messages = chat.chat_messages.order_by('-timestamp')[:10] # Get the last 10 messages
                 content = {
                     "command": "messages",
                     "messages": self.messages_to_json(messages)
@@ -38,9 +38,14 @@ class ChatConsumer(WebsocketConsumer):
     def new_message(self, data):
         author = data["from"]
         author_user = User.objects.get(username=author)
+        room_name = self.scope["url_route"]["kwargs"]["room_name"]
+
+        chat_room = Chat.objects.get(room_name=room_name)
+
         message = Message.objects.create(
             author=author_user,
-            content=data["message"]
+            content=data["message"],
+            chat_room=chat_room
         )
         content = {
             "command": "new_message",

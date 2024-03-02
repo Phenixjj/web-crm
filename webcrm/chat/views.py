@@ -21,7 +21,6 @@ def chat_lobby(request):
 def create_chat(request):
     if request.method == 'POST':
         data = json.loads(request.body)
-        print(f'data: {data}')
         room_name = data.get('room_name')
         participant_usernames = data.get('participants')
 
@@ -39,8 +38,11 @@ def create_chat(request):
         # Create chat room
         chat = Chat.objects.create(room_name=room_name)
 
+        chat.participants.add(request.user)
+
         # Add participants to the chat room
         chat.participants.add(*participants)  # Unpack participants queryset using *
+        chat.save()
 
         # Redirect to the chat room
         return render(request, "chat/room.html", {
@@ -53,7 +55,11 @@ def create_chat(request):
 
 @login_required
 def room(request, room_name):
+    chat = Chat.objects.get(room_name=room_name)
+    last_10_messages = chat.chat_messages.order_by('-timestamp')[:10]
+
     return render(request, "chat/room.html", {
         "room_name": room_name,
         "username": mark_safe(json.dumps(request.user.username)),
+        "last_10_messages": last_10_messages,
     })
