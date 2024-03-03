@@ -22,7 +22,7 @@
   <div class="d-flex align-items-center col-3">
     {% if user.is_authenticated %}
       <div id="chat-icon">
-        <button type="button" class="btn btn-info text-white" data-toggle="modal" data-target="#chatModal">Chat IA</button>
+        <button type="button" class="btn btn-info text-white" data-bs-toggle="modal" data-bs-target="#chatModal">Chat IA</button>
       </div>
       <p class="mb-0" style="margin-left: 25px; margin-right: 25px;">Welcome, {{ user.username }}!</p>
       <button type="button" class="btn btn-secondary ml-20 mr-5"><a href="{% url 'logout' %}" class="text-white text-decoration-none">Logout</a></button>
