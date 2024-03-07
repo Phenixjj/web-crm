@@ -6,7 +6,8 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.utils.safestring import mark_safe
 
-from ..webcrm.env import config
+from webcrm.env import config
+
 from .models import Chat
 
 # Create your views here.
