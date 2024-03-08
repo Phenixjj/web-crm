@@ -7,30 +7,29 @@
 <div class="container">
     <h1>Chat Teams</h1>
     <h3>Current Room: {{ room_name }}</h3>
-    <button id="start-stream">Start Stream</button>
-    <div id="stream-section" style="display: none;">
-        <div id="video-streams">
-            <!-- Video stream will be displayed here -->
-        </div>
+<!--    <button id="start-stream">Start Stream</button>-->
+<!--    <div id="stream-section" style="display: none;">-->
+        <section id="video-streams"></section>
 
-        <button id="stop-stream">Stop Stream</button>
-    </div>
+
+<!--        <button id="stop-stream">Stop Stream</button>-->
+<!--    </div>-->
     <textarea id="chat-log" cols="100" rows="20"></textarea><br>
     <input id="chat-message-input" type="text" size="100"><br>
     <input id="chat-message-submit" type="button" value="Send">
     {{ room_name|json_script:"room-name" }}
     <script src="{% static 'js/reconnecting-websocket.js' %}"></script>
     <script>
-        document.querySelector('#start-stream').addEventListener('click', function() {
-            // Display the stream section
-            document.querySelector('#stream-section').style.display = 'block';
-            document.querySelector('#start-stream').style.display = 'none';
-            });
-        document.querySelector('#stop-stream').addEventListener('click', function() {
-            // Hide the stream section
-            document.querySelector('#stream-section').style.display = 'none';
-            document.querySelector('#start-stream').style.display = 'block';
-            });
+<!--        document.querySelector('#start-stream').addEventListener('click', function() {-->
+<!--            // Display the stream section-->
+<!--            document.querySelector('#stream-section').style.display = 'block';-->
+<!--            document.querySelector('#start-stream').style.display = 'none';-->
+<!--            });-->
+<!--        document.querySelector('#stop-stream').addEventListener('click', function() {-->
+<!--            // Hide the stream section-->
+<!--            document.querySelector('#stream-section').style.display = 'none';-->
+<!--            document.querySelector('#start-stream').style.display = 'block';-->
+<!--            });-->
 
 
         const roomName = JSON.parse(document.getElementById('room-name').textContent);

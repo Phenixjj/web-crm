@@ -1,0 +1,24 @@
+{% load static %}
+<!--<link rel="stylesheet" type="text/css" href="{% static 'css/video_chat.css' %}">-->
+<h1>Video Chat</h1>
+<!--<button id="start-stream">Start Stream</button>-->
+<div id="stream-section">
+    <section id="video-streams">
+        <!-- Video stream will be displayed here -->
+    </section>
+<!--    <button id="stop-stream">Stop Stream</button>-->
+</div>
+<script type="text/javascript" src="{% static 'assets/AgoraRTC_N-4.20.1.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/streams.js' %}"></script>
+<!--<script>-->
+<!--        document.querySelector('#start-stream').addEventListener('click', function() {-->
+<!--            // Display the stream section-->
+<!--            document.querySelector('#stream-section').style.display = 'block';-->
+<!--            document.querySelector('#start-stream').style.display = 'none';-->
+<!--            });-->
+<!--        document.querySelector('#stop-stream').addEventListener('click', function() {-->
+<!--            // Hide the stream section-->
+<!--            document.querySelector('#stream-section').style.display = 'none';-->
+<!--            document.querySelector('#start-stream').style.display = 'block';-->
+<!--            });-->
+<!--</script>-->
