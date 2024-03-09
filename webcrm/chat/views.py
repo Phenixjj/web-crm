@@ -76,6 +76,7 @@ def create_chat(request):
 def room(request, room_name):
     chat = Chat.objects.get(room_name=room_name)
     last_10_messages = chat.chat_messages.order_by("-timestamp")[:10]
+    print(last_10_messages)
 
     return render(
         request,

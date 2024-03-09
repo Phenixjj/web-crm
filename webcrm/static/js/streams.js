@@ -2,7 +2,7 @@
 
 const APP_ID = '56f0277797a9410a96f336a003598711';
 const CHANNEL = 'main'
-const AGORA_TOKEN = '007eJxTYKi9/vpfweWvd8J1TJwTT68sPKb6KvRw0eycq1PzA5cW6rkoMJiapRkYmZubW5onWpoYGiRamqUZG5slGhgYm1pamBsasp19ldoQyMjwVbyBmZEBAkF8FobcxMw8BgYA2zsgaA==';
+const AGORA_TOKEN = '007eJxTYNBQ0924e/acK3fEnO5tW+G0U2nygsQjEz/8E6icWiTx79NrBQZTszQDI3Nzc0vzREsTQ4NES7M0Y2OzRAMDY1NLC3NDw4Wqb1IbAhkZTpfuY2CEQhCfhSE3MTOPgQEAwrgg/A==';
 let UID;
 console.log("stream.js connected!");
 
@@ -19,6 +19,8 @@ let joinAndDisplayLocalStream = async () => {
     console.warn("User ID: ", UID);
 
     localTracks = await AgoraRTC.createMicrophoneAndCameraTracks()
+    console.warn('======> Local audio track:', localTracks[0]);
+    console.warn('======> Local video track:', localTracks[1]);
 
     let player = `<div class="video-container" id="user-container-${UID}"><div class="username-wrapper"><span class="user-name">Me</span></div><div class="video-player" id="user-${UID}"></div></div>`
     document.getElementById('video-streams').insertAdjacentHTML('beforeend', player)
@@ -30,22 +32,29 @@ let joinAndDisplayLocalStream = async () => {
 let handleUserPublished = async (user, mediaType) => {
 
     remoteUsers[user.uid] = user
-    await client.subscribe(user, mediaType)
     console.warn("User ID: ", user.uid);
     console.warn("subscribe success");
     console.warn("'======> User mediaType : ", mediaType);
-    console.warn('======> User published video track:', user.videoTrack);
-    if(mediaType === 'audio') {
+    remoteTracks = await AgoraRTC.createMicrophoneAndCameraTracks()
+    let remoteAudioTrack = remoteTracks[0]
+    let remoteVideoTrack = remoteTracks[1]
+    // Subscribe to the user
+    await client.subscribe(user, mediaType);
+    console.warn('======> User remote published video track:', remoteVideoTrack);
+    console.warn('======> User remote published audio track:', remoteAudioTrack);
+
+
+    if(remoteVideoTrack) {
         let player = document.getElementById(`user-container-${user.uid}`)
         if(player != null) {
             player.remove()
         }
         player = `<div class="video-container" id="user-container-${user.uid}"><div class="username-wrapper"><span class="user-name">User ${user.uid}</span></div><div class="video-player" id="user-${user.uid}"></div></div>`
         document.getElementById('video-streams').insertAdjacentHTML('beforeend', player)
-        user.videoTrack.play(`user-${user.uid}`)
+        remoteVideoTrack.play(`user-${user.uid}`)
     }
-    if (mediaType === 'audio') {
-        user.audioTrack.play()
+    if (remoteAudioTrack) {
+        remoteAudioTrack.play()
     }
 }
 
