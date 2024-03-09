@@ -38,6 +38,7 @@
                         </div>
                         <div class="modal-footer">
                             <input type="text" id="chat-input" class="form-control" placeholder="Type your message...">
+                            <button type="button" class="btn btn-info" onclick="loadModel()">Load model</button>
                             <button type="button" class="btn btn-primary" onclick="sendMessage()">Send</button>
                         </div>
                     </div>
@@ -45,6 +46,29 @@
             </div>
         </div>
         <script>
+            function loadModel() {
+                // Get the message from the input field
+                var message = document.getElementById('chat-input').value;
+
+                // Clear the input field
+                document.getElementById('chat-input').value = '';
+
+                fetch('http://localhost:5001/model/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ "prompt": message }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+            }
+
             function sendMessage() {
                 // Get the message from the input field
                 var message = document.getElementById('chat-input').value;
