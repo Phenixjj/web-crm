@@ -14,11 +14,12 @@ from webcrm.env import config
 
 from .models import Chat, RoomMember
 
-# Create your views here.
+# This view file contains the logic for handling chat related requests
 
 
 @login_required
 def chat_lobby(request):
+    # This view returns the chat lobby page, showing all chats the user is part of and all other users
     all_users = User.objects.exclude(username=request.user.username)
     user_chats = request.user.chats.all()
     return render(
@@ -28,6 +29,7 @@ def chat_lobby(request):
 
 @login_required
 def create_chat(request):
+    # This view handles the creation of a new chat room
     if request.method == "POST":
         data = json.loads(request.body)
         room_name = data.get("room_name")
@@ -74,6 +76,7 @@ def create_chat(request):
 
 @login_required
 def room(request, room_name):
+    # This view returns a specific chat room page, showing the last 10 messages
     chat = Chat.objects.get(room_name=room_name)
     last_10_messages = chat.chat_messages.order_by("-timestamp")[:10]
     print(last_10_messages)
@@ -90,6 +93,7 @@ def room(request, room_name):
 
 
 def getToken(request):
+    # This view generates and returns a token for the Agora RTC service
     appId = str(config("AGORA_APP_ID"))
     appCertificate = str(config("AGORA_APP_CERTIFICATE"))
     channelName = request.GET.get("channel")
@@ -108,6 +112,7 @@ def getToken(request):
 
 @csrf_exempt
 def createMember(request):
+    # This view creates a new RoomMember instance or retrieves an existing one
     data = json.loads(request.body)
     member, created = RoomMember.objects.get_or_create(
         name=data["name"], uid=data["UID"], room_name=data["room_name"]
@@ -117,6 +122,7 @@ def createMember(request):
 
 
 def getMember(request):
+    # This view retrieves a specific RoomMember instance
     uid = request.GET.get("UID")
     room_name = request.GET.get("room_name")
 
@@ -130,13 +136,10 @@ def getMember(request):
 
 @csrf_exempt
 def deleteMember(request):
+    # This view deletes a specific RoomMember instance
     data = json.loads(request.body)
     member = RoomMember.objects.get(
         name=data["name"], uid=data["UID"], room_name=data["room_name"]
     )
     member.delete()
     return JsonResponse("Member deleted", safe=False)
-
-
-# def video_chat(request):
-#     return render(request, "chat/video_chat.html")
